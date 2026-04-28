@@ -1,4 +1,4 @@
-import projects from "./data/projects.js";
+import projects from "./data/project.js";
 import blogPosts from "./data/blog.js";
 import experience from "./data/experience.js";
 

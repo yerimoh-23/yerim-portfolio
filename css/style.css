@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Lora:ital@0;1&family=Ubuntu+Mono:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;600&display=swap');
+
 /* ========================================
    CUSTOM PROPERTIES
    ======================================== */
@@ -31,7 +33,7 @@
   --tag-edu-bg:   #e4def0; --tag-edu:   #473b64;
 
   --font-serif: "Playfair Display", "Georgia", serif;
-  --font-sans: "Montserrat", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   --fs-display: clamp(2.8rem, 7vw, 5rem);
   --fs-h1: clamp(1.75rem, 3.5vw, 2.75rem);
@@ -69,20 +71,10 @@
 }
 
 html {
-  font-family: var(--font-sans);
+  font-family: var(--font-sans) !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
-
-/* Ensure all non-title text uses Montserrat, including Korean */
-body, p, span, li, input, textarea, button, label, .contact-label, .contact-val, .contact-link, .section-label, .section-divider {
-  font-family: var(--font-sans) !important;
-}
-
-/* Keep titles using Playfair Display */
-h1, h2, h3, h4, h5, h6, .section-title {
-  font-family: var(--font-serif) !important;
-}
+  scroll-behavior: smooth;}
 
 body {
   background: var(--bg1);

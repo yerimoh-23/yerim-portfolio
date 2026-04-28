@@ -1,52 +1,8 @@
 import projects from "./data/project.js";
-import experience from "./data/experience.js";
-import skills from "./data/skill.js";
 
-
-// --- Navigation with sliding indicator ---
-const navLinks = document.querySelectorAll(".nav-btn");
-const navIndicator = document.querySelector(".nav-indicator");
-const sections = document.querySelectorAll(".section");
-
-function positionIndicator(btn) {
-  if (!navIndicator || !btn) return;
-  navIndicator.style.width = btn.offsetWidth + "px";
-  navIndicator.style.left = btn.offsetLeft + "px";
-}
-
-function setActiveSection(targetId) {
-  sections.forEach((s) => s.classList.toggle("active", s.id === targetId));
-  navLinks.forEach((link) => link.classList.toggle("active", link.dataset.section === targetId));
-
-  const activeBtn = document.querySelector(`.nav-btn[data-section="${targetId}"]`);
-  positionIndicator(activeBtn);
-  window.scrollTo({ top: 0, behavior: "smooth" });
-
-  // Trigger stagger animations for new section
-  requestAnimationFrame(() => {
-    const items = document.querySelectorAll(`#${targetId} .stagger-in`);
-    items.forEach((el, i) => {
-      el.classList.remove("visible");
-      setTimeout(() => el.classList.add("visible"), 60 + i * 50);
-    });
-  });
-}
-
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => setActiveSection(link.dataset.section));
-});
-
-// Position indicator on load
-window.addEventListener("load", () => {
-  const activeBtn = document.querySelector(".nav-btn.active");
-  positionIndicator(activeBtn);
-});
-window.addEventListener("resize", () => {
-  const activeBtn = document.querySelector(".nav-btn.active");
-  positionIndicator(activeBtn);
-});
-
-// --- Cursor glow ---
+// ══════════════════════════════════════════
+// CURSOR GLOW
+// ══════════════════════════════════════════
 const cursorGlow = document.querySelector(".cursor-glow");
 if (cursorGlow && window.matchMedia("(pointer: fine)").matches) {
   let mx = 0, my = 0, cx = 0, cy = 0;
@@ -58,25 +14,59 @@ if (cursorGlow && window.matchMedia("(pointer: fine)").matches) {
     cx += (mx - cx) * 0.08;
     cy += (my - cy) * 0.08;
     cursorGlow.style.left = cx + "px";
-    cursorGlow.style.top = cy + "px";
+    cursorGlow.style.top  = cy + "px";
     requestAnimationFrame(animateCursor);
   }
   animateCursor();
 }
 
-// --- Projects ---
-const projectGrid = document.getElementById("project-grid");
+// ══════════════════════════════════════════
+// STAGGER ENTRANCE ANIMATION
+// ══════════════════════════════════════════
+function triggerStagger() {
+  const items = document.querySelectorAll(".stagger-in");
+  items.forEach((el, i) => {
+    setTimeout(() => el.classList.add("visible"), 80 + i * 50);
+  });
+}
 
+// ══════════════════════════════════════════
+// 3D TILT EFFECT
+// ══════════════════════════════════════════
+function initTiltEffect() {
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+  document.querySelectorAll("[data-tilt]").forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width  - 0.5;
+      const y = (e.clientY - rect.top)  / rect.height - 0.5;
+      card.style.transform = `perspective(600px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-2px)`;
+    });
+    card.addEventListener("mouseleave", () => {
+      card.style.transform  = "perspective(600px) rotateY(0deg) rotateX(0deg) translateY(0px)";
+      card.style.transition = "transform 0.5s var(--ease-out)";
+    });
+    card.addEventListener("mouseenter", () => {
+      card.style.transition = "transform 0.1s ease-out";
+    });
+  });
+}
+
+// ══════════════════════════════════════════
+// PROJECTS (projects.html에서만 실행)
+// ══════════════════════════════════════════
 function renderProjects() {
-  projectGrid.innerHTML = projects
-    .map(
-      (p, i) => `
+  const projectGrid = document.getElementById("project-grid");
+  if (!projectGrid) return; // projects.html이 아니면 스킵
+
+  projectGrid.innerHTML = projects.map((p) => `
     <a href="${p.link}" target="_blank" rel="noopener"
        class="project-card glass-card stagger-in" data-category="${p.category}" data-tilt>
       <div class="project-card-img">
         <img src="${p.image}" alt="${p.title}" loading="lazy" />
         <div class="project-card-overlay">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
             <polyline points="15 3 21 3 21 9"/>
             <line x1="10" y1="14" x2="21" y2="3"/>
@@ -92,93 +82,60 @@ function renderProjects() {
         <span class="project-card-year">${p.year}</span>
       </div>
     </a>
-  `
-    )
-    .join("");
+  `).join("");
 }
 
-// --- Skills
-function renderSkills() {
-  const skillsContainer = document.getElementById("skills-list");
-  skillsContainer.innerHTML = skills
-    .map((skill) => `
-      <div class="skill-card glass-card">
-        <h3 class="skill-card-title">${skill.name}</h3>
-        <p class="skill-card-desc">${skill.description}</p>
-      </div>
-    `)
-    .join("");
-}
-
-// --- 3D tilt effect on cards ---
-function initTiltEffect() {
-  if (window.matchMedia("(pointer: coarse)").matches) return;
-
-  document.querySelectorAll("[data-tilt]").forEach((card) => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `perspective(600px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-2px)`;
-    });
-
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "perspective(600px) rotateY(0deg) rotateX(0deg) translateY(0px)";
-      card.style.transition = "transform 0.5s var(--ease-out)";
-    });
-
-    card.addEventListener("mouseenter", () => {
-      card.style.transition = "transform 0.1s ease-out";
-    });
-  });
-}
-
-// --- Stagger entrance for active section ---
-function triggerStagger(sectionId) {
-  const items = document.querySelectorAll(`#${sectionId} .stagger-in`);
-  items.forEach((el, i) => {
-    setTimeout(() => el.classList.add("visible"), 80 + i * 50);
-  });
-}
-
-// ── Language Toggle ──
-const LANG_KEY = 'portfolio-lang';
+// ══════════════════════════════════════════
+// LANGUAGE TOGGLE
+// ══════════════════════════════════════════
+const LANG_KEY = "portfolio-lang";
 
 function initLang() {
-  const saved = localStorage.getItem(LANG_KEY) || 'en';
-  setLang(saved, false);
+  const saved = localStorage.getItem(LANG_KEY) || "en";
+  applyLang(saved, false);
 }
 
-function setLang(lang, save = true) {
+function applyLang(lang, save = true) {
   if (save) localStorage.setItem(LANG_KEY, lang);
-  const btn = document.getElementById('lang-toggle');
-  if (lang === 'ko') {
-    document.body.classList.add('ko');
-    if (btn) btn.textContent = 'ENG';
+  const btn = document.getElementById("lang-toggle");
+  if (lang === "ko") {
+    document.body.classList.add("ko");
+    if (btn) btn.textContent = "ENG";
   } else {
-    document.body.classList.remove('ko');
-    if (btn) btn.textContent = '한국어';
+    document.body.classList.remove("ko");
+    if (btn) btn.textContent = "한국어";
   }
 }
 
 function toggleLang() {
-  const isKo = document.body.classList.contains('ko');
-  setLang(isKo ? 'en' : 'ko');
+  const isKo = document.body.classList.contains("ko");
+  applyLang(isKo ? "en" : "ko");
 }
 
-
-// Lang toggle button
-const langToggleBtn = document.getElementById('lang-toggle');
+const langToggleBtn = document.getElementById("lang-toggle");
 if (langToggleBtn) {
-  langToggleBtn.addEventListener('click', toggleLang);
+  langToggleBtn.addEventListener("click", toggleLang);
 }
 
-// --- Init ---
-initLang();
-renderProjects();
-renderSkills();
+// ══════════════════════════════════════════
+// BOTTOM NAV — active 링크 표시
+// ══════════════════════════════════════════
+function initNav() {
+  const current = window.location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll(".nav-btn[href]").forEach((a) => {
+    const href = a.getAttribute("href");
+    if (href === current) a.classList.add("active");
+    else a.classList.remove("active");
+  });
+}
 
-requestAnimationFrame(() => {
-  triggerStagger("about");
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+document.addEventListener("DOMContentLoaded", () => {
+  initLang();
+  initNav();
+  renderProjects();
+  triggerStagger();
   initTiltEffect();
 });

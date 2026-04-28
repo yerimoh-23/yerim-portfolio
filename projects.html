@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects — Yerim Oh</title>
+    <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Ubuntu+Mono:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+
+    <div class="ambient-bg" aria-hidden="true">
+      <div class="ambient-orb"></div>
+      <div class="ambient-orb"></div>
+      <div class="ambient-orb"></div>
+    </div>
+    <div class="noise-overlay" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <div class="site-wrapper">
+
+      <!-- ======================== PROJECTS ======================== -->
+      <section id="projects" class="section active">
+        <div class="container">
+
+        <p class="section-label">Portfolio</p>
+        <h2 class="section-title">Projects</h2>
+
+          <div id="project-grid" class="project-grid">
+            <!-- projects.js 기반으로 채워질 예정 -->
+          </div>
+
+        </div>
+      </section>
+
+    </div><!-- /site-wrapper -->
+
+    <!-- ======================== BOTTOM NAV ======================== -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <div class="nav-bar">
+        <div class="nav-indicator"></div>
+        <button class="nav-btn active" data-section="about">About</button>
+        <button class="nav-btn" data-section="experience">Experience</button>
+        <button class="nav-btn" data-section="projects">Projects</button>
+        <button class="nav-btn" data-section="skills">Skills</button>
+        <button class="lang-toggle" id="lang-toggle">한국어</button>
+      </div>
+    </nav>
+
+    <script type="module" src="./js/main.js"></script>
+    <!-- projects.js 만들면 아래 추가 -->
+    <!-- <script type="module" src="./js/projects.js"></script> -->
+  </body>
+</html>

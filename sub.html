@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yerim Oh</title>
+
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Ambient background orbs -->
+    <div class="ambient-bg" aria-hidden="true">
+      <div class="ambient-orb"></div>
+      <div class="ambient-orb"></div>
+      <div class="ambient-orb"></div>
+    </div>
+
+    <!-- Noise texture -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- Cursor glow -->
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <div class="site-wrapper">
+
+      <!-- ======================== ABOUT ======================== -->
+      <section id="about" class="section active">
+        <div class="container">
+          <div class="about-hero">
+            <h1 class="about-greeting stagger-in">Hi, I'm Yerim</h1>
+            <div class="about-bio stagger-in">
+              <p>
+                subtitle goes here
+              </p>
+              <p>
+                I'm especially interested in subtitle goes here
+              </p>
+              <p>
+                subtitle goes here - where i want to go deeper
+              </p>
+            </div>
+
+            <div class="about-meta">
+              <div class="meta-item">
+                <div class="meta-label">Based in</div>
+                <div class="meta-val">South Korea</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-label" >Degree</div>
+                <div class="meta-val" data-en>B.A. Statistics, Minor CS</div>
+                <div class="meta-val" data-ko>통계학 학사, CS 부전공</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-label" >Focus</div>
+                <div class="meta-val" data-en>Data Analysis · Statistical Modeling</div>
+                <div class="meta-val" data-ko>데이터 분석 · 통계 모델링</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-label">GitHub</div>
+                <div class="meta-val"><a href="https://github.com/yerimoh-23" target="_blank" style="color:inherit">yerimoh-23</a></div>
+              </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== EXPERIENCE ======================== -->
+      <section id="experience" class="section">
+        <div class="container">
+          <p class="section-label">Background</p>
+          <h2 class="section-title">Experience</h2>
+
+          <!-- ================ 2 WAYS TO SHOW EXPERIENCE ================ -->
+          <div class="tabs" style="margin-top:1.5rem;">
+            <button class="tab-btn active" data-target="timeline">
+              <span>Timeline</span>
+            </button>
+            <button class="tab-btn" data-target="category">
+              <span>By Category</span>
+            </button>
+          </div>
+
+          <!-- ══════════════ TIMELINE VIEW ══════════════ -->
+          <div id="timeline" class="tl-view active"> 
+              <!-- render.js가 자동으로 채워줌 -->
+          </div><!-- /timeline -->
+
+          <!-- ══════════════ CATEGORY VIEW ══════════════ -->
+          <div id="category" class="tl-view">
+            <div class="experience-group">
+              <h3 class="experience-group-title">Work & Research</h3>
+              <div id="work-timeline" class="timeline"></div>
+            </div>
+
+            <div class="experience-group">
+              <h3 class="experience-group-title">Activities & Leadership</h3>
+              <div id="activities-timeline" class="timeline"></div>
+            </div>
+
+            <div class="experience-group">
+              <h3 class="experience-group-title">Awards</h3>
+              <div id="awards-timeline" class="timeline"></div>
+            </div>
+
+            <div class="experience-group">
+              <h3 class="experience-group-title">Education</h3>
+              <div id="edu-timeline" class="timeline"></div>
+            </div>
+          </div> <!-- /category -->
+
+        </div>
+      </section>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+    <script type="module">
+      import { initExperience } from "./js/render.js";
+      document.addEventListener("DOMContentLoaded", initExperience);
+    </script>
+
+    <!-- ======================== PROJECTS ======================== -->
+    <section id="projects" class="section">
+      <div class="container">
+        <p class="section-label">Portfolio</p>
+        <h2 class="section-title">Projects</h2>
+        <div id="filter-bar"></div>
+        <div id="project-grid" class="project-grid"></div>
+      </div>
+    </section>
+
+    <!-- ======================== SKILLS ======================== -->
+    <section id="skills" class="section">
+      <div class="container">
+        <p class="section-label">Skills</p>
+        <h2 class="section-title">Expertise</h2>
+        <div id="skill-list" class="skill-list"></div>
+      </div>
+    </section>
+
+    <!-- ======================== BOTTOM NAV ======================== -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <div class="nav-bar">
+        <div class="nav-indicator"></div>
+        <button class="nav-btn active" data-section="about">About</button>
+        <button class="nav-btn" data-section="experience">Experience</button>
+        <button class="nav-btn" data-section="projects">Projects</button>
+        <button class="nav-btn" data-section="skills">Skills</button>
+        <button class="lang-toggle" id="lang-toggle">한국어</button>
+      </div>
+    </nav>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

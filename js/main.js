@@ -66,54 +66,8 @@ if (cursorGlow && window.matchMedia("(pointer: fine)").matches) {
 
 // --- Projects ---
 const projectGrid = document.getElementById("project-grid");
-const categories = ["All", ...new Set(projects.map((p) => p.category))];
-
-const categoryLabels = {
-  "ar/vr": "AR/VR",
-  crafting: "Crafting",
-  ai: "AI",
-  ios: "iOS",
-  macos: "MacOS",
-  game: "Game",
-  android: "Android",
-  web: "Web",
-};
-
-function renderCategoryLabels() {
-  const container = document.getElementById("filter-bar");
-  categories.forEach((cat) => {
-    const btn = document.createElement("button");
-    btn.className = "filter-btn glass-pill" + (cat === "All" ? " active" : "");
-    btn.dataset.category = cat;
-    btn.textContent = cat === "All" ? "All" : categoryLabels[cat] || cat;
-    btn.addEventListener("click", () => filterProjects(cat, btn));
-    container.appendChild(btn);
-  });
-}
-
-function filterProjects(category, activeBtn) {
-  document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
-  activeBtn.classList.add("active");
-
-  const items = document.querySelectorAll(".project-card");
-  let delay = 0;
-  items.forEach((item) => {
-    const match = category === "All" || item.dataset.category === category;
-    if (match) {
-      item.style.display = "";
-      item.style.animation = "none";
-      item.offsetHeight;
-      item.style.animationDelay = delay * 30 + "ms";
-      item.style.animation = "fadeScale 0.4s var(--ease-out) forwards";
-      delay++;
-    } else {
-      item.style.display = "none";
-    }
-  });
-}
 
 function renderProjects() {
-  renderCategoryLabels();
   projectGrid.innerHTML = projects
     .map(
       (p, i) => `
@@ -153,66 +107,6 @@ function renderSkills() {
         <p class="skill-card-desc">${skill.description}</p>
       </div>
     `)
-    .join("");
-}
-
-// --- Experience ---
-function renderDescription(desc) {
-  const items = Array.isArray(desc) ? desc : [desc];
-  return `<ul class="timeline-desc-list">${items.map((d) => `<li>${d}</li>`).join("")}</ul>`;
-}
-
-function renderExperience() {
-  const workTimeline = document.getElementById("work-timeline");
-  workTimeline.innerHTML = experience.work
-    .map(
-      (item, i) => `
-    <div class="timeline-entry stagger-in">
-      <div class="timeline-marker"></div>
-      <div class="timeline-content glass-card">
-        <div class="timeline-header">
-          <a href="${item.companyUrl}" target="_blank" rel="noopener" class="timeline-company-link">
-            <img src="${item.logo}" alt="${item.company}" class="timeline-logo" />
-            <span class="timeline-company">${item.company}</span>
-          </a>
-          <span class="timeline-date">${item.date}</span>
-        </div>
-        <p class="timeline-role">${item.role}</p>
-        ${renderDescription(item.description)}
-        <div class="timeline-tags">
-          ${item.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
-        </div>
-      </div>
-    </div>
-  `
-    )
-    .join("");
-
-  const eduTimeline = document.getElementById("edu-timeline");
-  eduTimeline.innerHTML = experience.education
-    .map(
-      (item, i) => `
-    <div class="timeline-entry stagger-in">
-      <div class="timeline-marker"></div>
-      <div class="timeline-content glass-card">
-        <div class="timeline-header">
-          <a href="${item.url}" target="_blank" rel="noopener" class="timeline-company-link">
-            <span class="timeline-company">${item.institution}</span>
-          </a>
-          <span class="timeline-date">${item.date}</span>
-        </div>
-        <p class="timeline-desc">${item.description}</p>
-        ${
-          item.highlights.length
-            ? `<ul class="timeline-highlights">
-            ${item.highlights.map((h) => `<li>${h}</li>`).join("")}
-          </ul>`
-            : ""
-        }
-      </div>
-    </div>
-  `
-    )
     .join("");
 }
 
@@ -282,7 +176,6 @@ if (langToggleBtn) {
 // --- Init ---
 initLang();
 renderProjects();
-renderExperience();
 renderSkills();
 
 requestAnimationFrame(() => {

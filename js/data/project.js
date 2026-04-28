@@ -1,87 +1,257 @@
-// ── Language Toggle ──
-const LANG_KEY = 'portfolio-lang';
+const projects = [
+  {
+    category: "ar/vr",
+    link: "https://github.com/jonipark/Coggiri",
+    image: "./assets/images/projects/project-coggiri.png",
+    title: "Coggiri",
+    tags: ["SwiftUI", "RealityKit", "VisionOS"],
+    year: 2025,
+    description:
+      "An interactive Vision Pro game designed to enhance cognitive skills for seniors through 3D fruit-grabbing in mixed reality",
+  },
+  {
+    category: "ar/vr",
+    link: "https://github.com/jonipark/unity-gamgak",
+    image: "./assets/images/projects/project-gamgak.png",
+    title: "Gamgak",
+    tags: ["Unity", "VR SDKs"],
+    year: 2025,
+    description:
+      "A seamless MR project bridging technology and art for an enhanced museum experience",
+  },
+  {
+    category: "ar/vr",
+    link: "https://github.com/jonipark/AutoInsight",
+    image: "./assets/images/projects/project-auto-insight.png",
+    title: "AutoInsight",
+    tags: ["Unity", "VR SDKs"],
+    year: 2023,
+    description: "A VR showroom for intuitive car model and option comparison",
+  },
+  {
+    category: "ai",
+    link: "https://github.com/jonipark/ReactGmailGPT",
+    image: "./assets/images/projects/project-joni-gmail-gpt.png",
+    title: "GmailGPT",
+    tags: ["GPT API", "Chrome Storage API", "React"],
+    year: 2023,
+    description: "Chrome extension that integrates GPT API into Gmail",
+  },
+  {
+    category: "game",
+    link: "https://github.com/jonipark/stardew-mine",
+    image: "./assets/images/projects/project-stardew-mine.png",
+    title: "Stardew Mine",
+    tags: ["GaFr", "Java"],
+    year: 2023,
+    description:
+      "Grid-based mining game with Minecraft-like crafting and gathering gems",
+  },
+  {
+    category: "web",
+    link: "https://github.com/jonipark/HackDartmouth-todil",
+    image: "./assets/images/projects/project-todil.png",
+    title: "Todil",
+    tags: ["React.js"],
+    year: 2023,
+    description:
+      "Website that allows users to log daily learnings and track their growth over time",
+  },
+  {
+    category: "android",
+    link: "https://github.com/inception-tree/seed.io",
+    image: "./assets/images/projects/project-seed-io.png",
+    title: "Seed.io",
+    tags: ["Kotlin", "Firebase"],
+    year: 2022,
+    description:
+      "Android app that empowers startup builders to post their projects and receive feedback",
+  },
+  {
+    category: "crafting",
+    link: "https://zeepada.ghost.io/how-to-build-magic-mirror-with-raspberry-piwe-use-the-same-old-mirrors-every-day-when-we-brush-our-teeth-wash-our-faces-or-get-ready-to-go-out-can-it-make-it-so-that-something-more-inte/",
+    image: "./assets/images/projects/project-marron-mirror.png",
+    title: "Marron Mirror",
+    tags: ["Raspberry Pi", "JavaScript"],
+    year: 2022,
+    description: "Smart mirror that displays curated user information",
+  },
+  {
+    category: "game",
+    link: "https://github.com/jonipark/voyager-journey",
+    image: "./assets/images/projects/project-voyager-journey.png",
+    title: "Voyager Journey",
+    tags: ["GaFr", "Java"],
+    year: 2023,
+    description:
+      "2D space game where a player controls Voyager spacecraft with two orbiting soldiers",
+  },
+  {
+    category: "ios",
+    link: "https://github.com/jonipark/SingSangSong",
+    image: "./assets/images/projects/project-sing-sang-song.png",
+    title: "SingSangSong",
+    tags: ["Swift", "Realm"],
+    year: 2019,
+    description: "Memo app for my go-to karaoke songs",
+  },
+  {
+    category: "ios",
+    link: "https://github.com/jonipark/Jnitter",
+    image: "./assets/images/projects/project-jnitter.png",
+    title: "Jnitter",
+    tags: ["Swift", "Twitter API"],
+    year: 2022,
+    description:
+      "Twitter clone app to view, compose, favorite, and retweet tweets",
+  },
+  {
+    category: "android",
+    link: "#",
+    image: "./assets/images/projects/project-minesweeper.png",
+    title: "Minesweeper",
+    tags: ["Kotlin"],
+    year: 2022,
+    description: "Android app for minesweeper game",
+  },
+  {
+    category: "ios",
+    link: "https://github.com/jonipark/Jonistagram",
+    image: "./assets/images/projects/project-jonistagram.png",
+    title: "Jonistagram",
+    tags: ["Swift", "Parse"],
+    year: 2022,
+    description:
+      "Instagram clone with a custom Parse backend that allows a user to post photos, view feed, and add comments",
+  },
+  {
+    category: "ios",
+    link: "https://github.com/jonipark/Flix",
+    image: "./assets/images/projects/project-flix.png",
+    title: "Flix",
+    tags: ["Swift", "The Movie Database API"],
+    year: 2022,
+    description:
+      "App that allows users to browse movies from the The Movie Database API",
+  },
+  {
+    category: "web",
+    link: "https://github.com/jonipark/MLFQ-simulator",
+    image: "./assets/images/projects/project-mlfq-simulator.png",
+    title: "MLFQ Simulator",
+    tags: ["Next.js", "Redux", "Tailwind CSS"],
+    year: 2023,
+    description: "Web-based MLFQ scheduling simulator for Operating Systems",
+  },
+  {
+    category: "ar/vr",
+    link: "https://github.com/jonipark/ComputerGraphics",
+    image: "./assets/images/projects/project-car-wheels.png",
+    title: "Car and Wheels",
+    tags: ["WebGL", "OpenGL", "Kotlin"],
+    year: 2022,
+    description: "3D Car and Wheels movement",
+  },
+  {
+    category: "game",
+    link: "https://github.com/jonipark/ComputerGraphics",
+    image: "./assets/images/projects/project-ow.png",
+    title: "Overwatch Revenge",
+    tags: ["WebGL", "OpenGL", "Kotlin"],
+    year: 2022,
+    description: "2D Overwatch supports revenge",
+  },
+  {
+    category: "macos",
+    link: "https://github.com/jonipark/Mactwork",
+    image: "./assets/images/projects/project-mactwork.png",
+    title: "Mactwork",
+    tags: ["Swift (MacOS)"],
+    year: 2023,
+    description: "Essential Wi-Fi network details in one place",
+  },
+  {
+    category: "ai",
+    link: "https://github.com/jonipark/JoniGPT",
+    image: "./assets/images/projects/project-joni-gpt.png",
+    title: "JoniGPT",
+    tags: ["GPT-3", "Next.js"],
+    year: 2023,
+    description: "Website that allows users to chat with a GPT-3 model",
+  },
+  {
+    category: "android",
+    link: "#",
+    image: "./assets/images/projects/project-shopping-list.png",
+    title: "MyShoppingList",
+    tags: ["Kotlin"],
+    year: 2022,
+    description: "Android app for shopping checklist",
+  },
+  {
+    category: "android",
+    link: "#",
+    image: "./assets/images/projects/project-my-wallet.png",
+    title: "MyWallet",
+    tags: ["Kotlin"],
+    year: 2022,
+    description: "Android app for ledger management",
+  },
+  {
+    category: "android",
+    link: "#",
+    image: "./assets/images/projects/project-stopwatch.png",
+    title: "Stopwatch",
+    tags: ["Kotlin", "Thread"],
+    year: 2022,
+    description: "Android app for stopwatch",
+  },
+  {
+    category: "android",
+    link: "#",
+    image: "./assets/images/projects/project-calculator.png",
+    title: "Calculator",
+    tags: ["Kotlin"],
+    year: 2022,
+    description: "Android app for calculator",
+  },
+  {
+    category: "web",
+    link: "https://devpost.com/software/hackher413",
+    image: "./assets/images/projects/project-must-seum.png",
+    title: "Must-seum",
+    tags: ["React.js", "OpenStreetMap"],
+    year: 2022,
+    description: "Hackathon Project: museum must-see artworks recommendation",
+  },
+  {
+    category: "web",
+    link: "https://mohoho-info.web.app/",
+    image: "./assets/images/projects/project-mohoho.png",
+    title: "Mohoho",
+    tags: ["HTML", "CSS"],
+    year: 2022,
+    description:
+      "Informative website with essential links and info for Mount Holyoke College",
+  },
+  {
+    category: "web",
+    link: "https://cssociety.web.app/",
+    image: "./assets/images/projects/project-cssociety.png",
+    title: "CS Society",
+    tags: ["React.js"],
+    year: 2022,
+    description: "Informative website for school CS organization",
+  },
+  {
+    category: "game",
+    link: "https://github.com/jonipark/angryflappybird",
+    image: "./assets/images/projects/project-angry-flappy-bird.png",
+    title: "Angry Flappy Bird",
+    tags: ["Java", "JavaFX"],
+    year: 2022,
+    description: "Angry Bird + Flappy Bird with the GUI button",
+  },
+];
 
-function initLang() {
-  const saved = localStorage.getItem(LANG_KEY) || 'en';
-  setLang(saved, false);
-}
-
-function setLang(lang, save = true) {
-  if (save) localStorage.setItem(LANG_KEY, lang);
-  const btn = document.getElementById('lang-toggle');
-  if (lang === 'ko') {
-    document.body.classList.add('ko');
-    if (btn) btn.textContent = 'EN';
-  } else {
-    document.body.classList.remove('ko');
-    if (btn) btn.textContent = '한국어';
-  }
-}
-
-function toggleLang() {
-  const isKo = document.body.classList.contains('ko');
-  setLang(isKo ? 'en' : 'ko');
-}
-
-// ── Dark Mode Toggle ──
-const THEME_KEY = 'portfolio-theme';
-
-function initTheme() {
-  const saved = localStorage.getItem(THEME_KEY) || 'light';
-  setTheme(saved, false);
-}
-
-function setTheme(theme, save = true) {
-  if (save) localStorage.setItem(THEME_KEY, theme);
-  if (theme === 'dark') {
-    document.body.classList.add('dark');
-  } else {
-    document.body.classList.remove('dark');
-  }
-}
-
-function toggleTheme() {
-  const isDark = document.body.classList.contains('dark');
-  setTheme(isDark ? 'light' : 'dark');
-}
-
-// ── Active Nav Link ──
-function initNav() {
-  const current = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    const href = a.getAttribute('href');
-    if (href === current || (current === '' && href === 'index.html')) {
-      a.classList.add('active');
-    }
-  });
-}
-
-// ── Tab Switch ──
-function initTabs() {
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const tabViews = document.querySelectorAll('.tl-view');
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
-      tabViews.forEach(v => v.classList.remove('active'));
-      btn.classList.add('active');
-      const target = document.getElementById(btn.dataset.target);
-      if (target) target.classList.add('active');
-    });
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
-  initLang();
-  initNav();
-  initTabs();
-  const btn = document.getElementById('lang-toggle');
-  if (btn) btn.addEventListener('click', toggleLang);
-  // Optional: add keyboard shortcut for dark mode toggle (Ctrl+Shift+D)
-  document.addEventListener('keydown', (e) => {
-    if (e.ctrlKey && e.shiftKey && e.key === 'D') {
-      toggleTheme();
-    }
-  });
-});
+export default projects;

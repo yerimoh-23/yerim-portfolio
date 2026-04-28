@@ -1,416 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Experience — Yerim Oh</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experience — Yerim Oh</title>
+    <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Ubuntu+Mono:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
 
-<nav>
-  <a class="nav-logo" href="index.html">Yerim Oh</a>
-  <ul class="nav-links">
-    <li><a href="index.html">About</a></li>
-    <li><a href="experience.html">Experience</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="skills.html">Skills</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  <button class="lang-toggle" id="lang-toggle">한국어</button>
-</nav>
-
-<main class="page">
-
-  <h1 data-en>Experience</h1>
-  <h1 data-ko>경험</h1>
-
-  <div class="tabs" style="margin-top:1.5rem;">
-    <button class="tab-btn active" data-target="timeline">
-      <span data-en>Timeline</span><span data-ko>타임라인</span>
-    </button>
-    <button class="tab-btn" data-target="category">
-      <span data-en>By Category</span><span data-ko>카테고리별</span>
-    </button>
-  </div>
-
-  <!-- ══════════════ TIMELINE VIEW ══════════════ -->
-  <div id="timeline" class="tl-view active">
-
-    <!-- 2021–2022 -->
-    <div class="year-block">
-      <div class="year-label">2021.08 – 2022.05 &nbsp;·&nbsp; <span data-en>Freshman</span><span data-ko>1학년</span></div>
-      <div class="tl-rows">
-
-        <div class="tl-row">
-          <span class="tag tag-act tl-tag"><span data-en>Activity</span><span data-ko>활동</span></span>
-          <div class="tl-body">
-            <div class="tl-title">
-              <span data-en>Korean Language Tutor</span><span data-ko>한국어 수업 튜터</span>
-              <span class="badge"><span data-en>→ until graduation</span><span data-ko>→ 졸업까지</span></span>
-            </div>
-            <div class="tl-detail">
-              <span data-en>Paid on-campus program · 4–6 students/semester · ~40 students over 8 semesters</span>
-              <span data-ko>교내 유급 프로그램 · 학기당 4–6명 · 8학기 누적 약 40명</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <span class="tag tag-award tl-tag"><span data-en>Award</span><span data-ko>수상</span></span>
-          <div class="tl-body">
-            <div class="tl-title">Mildred L. Sanderson Prize in Mathematics</div>
-            <div class="tl-detail">
-              <span data-en>MHC Dept. of Mathematics & Statistics · Awarded for distinguished performance in mathematics during first year (Sep 2022)</span>
-              <span data-ko>MHC 수학통계학과 · 1학년 수학 최우수 성적 수여 (2022.09)</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
+    <div class="ambient-bg" aria-hidden="true">
+      <div class="ambient-orb"></div>
+      <div class="ambient-orb"></div>
+      <div class="ambient-orb"></div>
     </div>
+    <div class="noise-overlay" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
 
-    <!-- 2022–2023 -->
-    <div class="year-block">
-      <div class="year-label">2022.09 – 2023.05 &nbsp;·&nbsp; <span data-en>Sophomore</span><span data-ko>2학년</span></div>
-      <div class="tl-rows">
+    <div class="site-wrapper">
+      <section id="experience" class="section active">
+        <div class="container">
 
-        <div class="tl-row">
-          <span class="tag tag-proj tl-tag"><span data-en>Project</span><span data-ko>프로젝트</span></span>
-          <div class="tl-body">
-            <div class="tl-title">
-              <span data-en>HackHolyoke 2022 — Mental Health Screening Web App</span>
-              <span data-ko>HackHolyoke 2022 — 정신건강 스크리닝 웹앱</span>
+          <p class="section-label" data-en>Background</p>
+          <h2 class="section-title" data-en>Experience</h2>
+
+          <!-- 탭 버튼 -->
+          <div class="tabs" style="margin-top:1.5rem;">
+            <button class="tab-btn active" data-target="timeline">
+              <span>Timeline</span>
+            </button>
+            <button class="tab-btn" data-target="category">
+              <span>By Category</span>
+            </button>
+          </div>
+
+          <!-- ══════ TIMELINE VIEW ══════ -->
+          <div id="timeline" class="tl-view active">
+            <!-- render.js → renderTimeline()이 채워줌 -->
+          </div>
+
+          <!-- ══════ CATEGORY VIEW ══════ -->
+          <div id="category" class="tl-view">
+            <div class="experience-group">
+              <h3 class="experience-group-title" data-en>Work & Research</h3>
+              <h3 class="experience-group-title" data-ko>경력 & 연구</h3>
+              <div id="work-timeline" class="cat-list"></div>
             </div>
-            <div class="tl-detail">
-              <span class="hl"><span data-en>Best Remote Health Hack</span><span data-ko>Best Remote Health Hack 수상</span></span>
-              <span data-en> · 9 of 16 teams submitted · 24 hrs · HTML / CSS / JavaScript</span>
-              <span data-ko> · 16팀 참가, 제출 완료 9팀 중 수상 · 24시간 · HTML/CSS/JS</span>
+            <div class="experience-group">
+              <h3 class="experience-group-title" data-en>Activities & Leadership</h3>
+              <h3 class="experience-group-title" data-ko>활동 & 리더십</h3>
+              <div id="activities-timeline" class="cat-list"></div>
+            </div>
+            <div class="experience-group">
+              <h3 class="experience-group-title" data-en>Awards</h3>
+              <h3 class="experience-group-title" data-ko>수상</h3>
+              <div id="awards-timeline" class="cat-list"></div>
+            </div>
+            <div class="experience-group">
+              <h3 class="experience-group-title" data-en>Education</h3>
+              <h3 class="experience-group-title" data-ko>학력</h3>
+              <div id="edu-timeline" class="cat-list"></div>
             </div>
           </div>
-        </div>
 
-        <div class="tl-row">
-          <span class="tag tag-proj tl-tag"><span data-en>Project</span><span data-ko>프로젝트</span></span>
-          <div class="tl-body">
-            <div class="tl-title">AngryFlappyBird — <span data-en>Java Game</span><span data-ko>Java 게임 개발</span></div>
-            <div class="tl-detail">JavaFX · <span data-en>3 difficulty levels · custom UI & animation · Java / HTML / CSS / JS</span><span data-ko>난이도 3단계 · 커스텀 UI/애니메이션 · Java/HTML/CSS/JS</span></div>
-          </div>
         </div>
-
-        <div class="tl-row">
-          <span class="tag tag-act tl-tag"><span data-en>Activity</span><span data-ko>활동</span></span>
-          <div class="tl-body">
-            <div class="tl-title">SGA Constitution Review Committee <span class="badge">2022.10 – 2024.05</span></div>
-            <div class="tl-detail"><span data-en>Reviewed and revised student government constitution; developed new policies</span><span data-ko>학생회 헌장 검토 및 정책 개정</span></div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <span class="tag tag-act tl-tag"><span data-en>Activity</span><span data-ko>활동</span></span>
-          <div class="tl-body">
-            <div class="tl-title">CS Society — Marketing &amp; Media <span class="badge">2022.12 <span data-en>joined</span><span data-ko>합류</span></span></div>
-            <div class="tl-detail"><span data-en>Social media, poster design, event promotion, alumni interviews</span><span data-ko>SNS 운영, 포스터 제작, 이벤트 홍보, 졸업생 인터뷰</span></div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <span class="tag tag-act tl-tag"><span data-en>Activity</span><span data-ko>활동</span></span>
-          <div class="tl-body">
-            <div class="tl-title">KSA Board <span class="badge">2022.12 – 2023.10</span></div>
-            <div class="tl-detail"><span data-en>Social media promotions · Korea Night 2023: $1,200 budget, 350 attendees</span><span data-ko>SNS 홍보 담당 · Korea Night 2023: 예산 $1,200, 참가자 <span class="hl">350명</span></span></div>
-          </div>
-        </div>
-
-      </div>
+      </section>
     </div>
 
-    <!-- Summer 2023 -->
-    <div class="year-block">
-      <div class="year-label">2023.06 – 2023.08 &nbsp;·&nbsp; <span data-en>Summer</span><span data-ko>여름방학</span></div>
-      <div class="tl-rows">
-        <div class="tl-row">
-          <span class="tag tag-work tl-tag"><span data-en>Work</span><span data-ko>경력</span></span>
-          <div class="tl-body">
-            <div class="tl-title"><span data-en>Math Tutor (Private)</span><span data-ko>수학 과외</span></div>
-            <div class="tl-detail"><span data-en>10th grade · Algebra &amp; Trigonometry · 2x/week · <span class="hl">Grade F → B</span></span><span data-ko>고등학교 10학년 · Algebra &amp; Trigonometry · 주 2회 · <span class="hl">성적 F → B 향상</span></span></div>
-          </div>
-        </div>
+<!-- ======================== BOTTOM NAV ======================== -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <div class="nav-bar">
+        <div class="nav-indicator"></div>
+        <a href="index.html" class="nav-btn active">
+          <span data-en>About</span><span data-ko>소개</span>
+        </a>
+        <a href="experience.html" class="nav-btn">
+          <span data-en>Experience</span><span data-ko>경험</span>
+        </a>
+        <a href="projects.html" class="nav-btn">
+          <span data-en>Projects</span><span data-ko>프로젝트</span>
+        </a>
+        <a href="skills.html" class="nav-btn">
+          <span data-en>Skills</span><span data-ko>스킬</span>
+        </a>
+        <a href="contact.html" class="nav-btn">
+          <span data-en>Contact</span><span data-ko>연락처</span>
+        </a>
+        <button class="lang-toggle" id="lang-toggle">한국어</button>
       </div>
-    </div>
+    </nav>
 
-    <!-- 2023–2024 Junior -->
-    <div class="year-block">
-      <div class="year-label">2023.09 – 2024.05 &nbsp;·&nbsp; <span data-en>Junior</span><span data-ko>3학년</span></div>
-      <div class="tl-rows">
-
-        <div class="tl-row">
-          <span class="tag tag-work tl-tag"><span data-en>Work</span><span data-ko>경력</span></span>
-          <div class="tl-body">
-            <div class="tl-title">Teaching Assistant — Calculus II (3-1), Probability (3-2) <span class="badge">→ <span data-en>graduation</span><span data-ko>졸업까지</span></span></div>
-            <div class="tl-detail"><span class="hl"><span data-en>18–39 students/semester</span><span data-ko>학기당 18–39명</span></span> · <span data-en>group sessions, 1:1 support, grading &amp; feedback</span><span data-ko>그룹 세션 진행, 1:1 지원, 채점 및 피드백</span></div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <span class="tag tag-proj tl-tag"><span data-en>Project</span><span data-ko>프로젝트</span></span>
-          <div class="tl-body">
-            <div class="tl-title">Starting Salary Prediction Model</div>
-            <div class="tl-detail"><span class="hl">444 <span data-en>institutions</span><span data-ko>개 대학</span></span> · <span data-en>Linear / Ridge / Decision Tree regression · best <span class="hl">R² ≈ 0.80</span> · Python / Pandas</span><span data-ko>다중회귀/Ridge/Decision Tree 비교 · <span class="hl">R² ≈ 0.80</span> · Python/Pandas</span></div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <span class="tag tag-act tl-tag"><span data-en>Activity</span><span data-ko>활동</span></span>
-          <div class="tl-body">
-            <div class="tl-title">CS Society — Marketing &amp; Media <span data-en>Chair</span><span data-ko>팀장</span> <span class="badge">2023.11 – 2024.05</span></div>
-            <div class="tl-detail"><span data-en>Promoted from member to chair</span><span data-ko>멤버 → 팀장 승진</span></div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <span class="tag tag-act tl-tag"><span data-en>Activity</span><span data-ko>활동</span></span>
-          <div class="tl-body">
-            <div class="tl-title">SGA Student Conference Committee <span class="badge">2023.09 – 2024.12</span></div>
-            <div class="tl-detail"><span data-en>Designed &amp; administered college-wide annual surveys via Qualtrics · <span class="hl">800–1,000+ respondents/year</span> · 2 academic years · tailored reports per department</span><span data-ko>Qualtrics 전교 설문 설계·운영 · <span class="hl">연간 응답자 800–1,000명+</span> · 2개 academic year · 부서별 맞춤 데이터 리포트</span></div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <span class="tag tag-act tl-tag"><span data-en>Activity</span><span data-ko>활동</span></span>
-          <div class="tl-body">
-            <div class="tl-title">HackHolyoke <span data-en>Co-chair (Host)</span><span data-ko>Co-chair (주최)</span> <span class="badge">2024.02 – 2025.02</span></div>
-            <div class="tl-detail"><span data-en>3 sponsors · <span class="hl">135 participants</span> · 24-hr hackathon · survey-driven resource planning</span><span data-ko>스폰서 3개사 · <span class="hl">실 참가자 135명</span> · 24시간 해커톤 · 설문 기반 데이터 운영</span></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Summer 2024 -->
-    <div class="year-block">
-      <div class="year-label">2024.05 – 2024.08 &nbsp;·&nbsp; <span data-en>Summer</span><span data-ko>여름방학</span></div>
-      <div class="tl-rows">
-
-        <div class="tl-row">
-          <span class="tag tag-work tl-tag"><span data-en>Work</span><span data-ko>경력</span></span>
-          <div class="tl-body">
-            <div class="tl-title"><span data-en>Modeling Research Assistant</span><span data-ko>Modeling Research Assistant</span> <span class="badge">→ 2025.05</span></div>
-            <div class="tl-detail"><span data-en>NetLogo fractal growth simulation · R · Senior Symposium presentation (Apr 2025)</span><span data-ko>NetLogo 기반 프랙탈 성장 시뮬레이션 · R · Senior Symposium 발표 (2025.04)</span></div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <span class="tag tag-work tl-tag"><span data-en>Work</span><span data-ko>경력</span></span>
-          <div class="tl-body">
-            <div class="tl-title"><span data-en>TOEFL Tutor (Private)</span><span data-ko>TOEFL 과외</span> <span class="badge">2024.06 – 2024.08</span></div>
-            <div class="tl-detail"><span data-en>English &amp; test strategy · mock score <span class="hl">40 → 85 (+45 pts)</span></span><span data-ko>영어 및 시험 전략 지도 · 모의고사 <span class="hl">40점 → 85점 (+45점)</span></span></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- 2024–2025 Senior -->
-    <div class="year-block">
-      <div class="year-label">2024.09 – 2025.05 &nbsp;·&nbsp; <span data-en>Senior</span><span data-ko>4학년</span></div>
-      <div class="tl-rows">
-
-        <div class="tl-row">
-          <span class="tag tag-work tl-tag"><span data-en>Work</span><span data-ko>경력</span></span>
-          <div class="tl-body">
-            <div class="tl-title">Teaching Assistant — Calculus III (4-1), Mathematical Statistics (4-2)</div>
-            <div class="tl-detail"><span data-en>18–39 students/semester · 4 semesters total</span><span data-ko>학기당 18–39명 · 4학기 총 누적 진행</span></div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <span class="tag tag-proj tl-tag"><span data-en>Project</span><span data-ko>프로젝트</span></span>
-          <div class="tl-body">
-            <div class="tl-title">2023 Global Development &amp; Prosperity</div>
-            <div class="tl-detail"><span class="hl">167 <span data-en>countries</span><span data-ko>개국</span>, 12 <span data-en>indicators</span><span data-ko>개 지표</span></span> · K-means (K=3) · R · Applied Regression Methods</div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <span class="tag tag-proj tl-tag"><span data-en>Project</span><span data-ko>프로젝트</span></span>
-          <div class="tl-body">
-            <div class="tl-title">F1 Miami GP Pit Stop Analysis</div>
-            <div class="tl-detail"><span class="hl">1,111 laps</span> · <span data-en>logistic regression + k-fold CV · R</span><span data-ko>로지스틱 회귀 + k-fold 교차검증 · R</span></div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <span class="tag tag-award tl-tag"><span data-en>Award</span><span data-ko>수상</span></span>
-          <div class="tl-body">
-            <div class="tl-title">Statistics Prize in Honor of George Whitfield Cobb</div>
-            <div class="tl-detail"><span data-en>MHC Dept. of Mathematics & Statistics · Awarded for outstanding achievement in the Statistics major (May 2025)</span><span data-ko>MHC 수학통계학과 · 통계학 전공 최우수 학업 성취 수여 (2025.05)</span></div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <span class="tag tag-act tl-tag"><span data-en>Activity</span><span data-ko>활동</span></span>
-          <div class="tl-body">
-            <div class="tl-title">Senior Symposium <span data-en>Research Presentation</span><span data-ko>연구 발표</span> <span class="badge">2025.04</span></div>
-            <div class="tl-detail"><em>Models of Fractal Growth with Application to Adsorptive Polymers</em></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- OPT -->
-    <div class="year-block">
-      <div class="year-label">2025.07 – 2026.02 &nbsp;·&nbsp; OPT</div>
-      <div class="tl-rows">
-        <div class="tl-row">
-          <span class="tag tag-work tl-tag"><span data-en>Work</span><span data-ko>경력</span></span>
-          <div class="tl-body">
-            <div class="tl-title">Warehouse Operations Analyst — Samyang Logistics America</div>
-            <div class="tl-detail">
-              <span data-en>Analyzed daily inbound, outbound &amp; fulfillment operations data; produced analytical reports for internal leadership and client company to support operational planning and performance monitoring.</span>
-              <span data-ko>입출고·풀필먼트 전반 운영 데이터 일일 분석 및 내부 리더십·클라이언트 대상 분석 리포트 작성.</span>
-            </div>
-            <div class="tl-detail" style="margin-top:4px">
-              <span data-en>Key project: Analyzed <span class="hl">50,000+ minutes</span> of task-level workload data; built an Excel-based workforce demand model to replace manual staffing estimation → recommendation implemented, <span class="hl">2 employees hired</span>.</span>
-              <span data-ko>별도 프로젝트: <span class="hl">50,000분+</span> 작업 데이터 분석 · Excel 인력 수요 예측 모델 개발 → <span class="hl">2명 추가 채용</span>으로 이어짐.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Current -->
-    <div class="year-block">
-      <div class="year-label">2026.03 – <span data-en>Present</span><span data-ko>현재</span></div>
-      <div class="tl-rows">
-        <div class="tl-row">
-          <span class="tag tag-work tl-tag"><span data-en>Work</span><span data-ko>경력</span></span>
-          <div class="tl-body">
-            <div class="tl-title">Statistics Intern — Change the Present (<span data-en>Non-profit, Remote</span><span data-ko>비영리, Remote</span>)</div>
-            <div class="tl-detail">
-              <span data-en>Building a Google Sheets → PostgreSQL ETL pipeline using Python + SQL. Solo ownership from design to implementation. Stack: Python, PostgreSQL, Retool.</span>
-              <span data-ko>Google Sheets → PostgreSQL ETL 파이프라인 구축 · Python + SQL · 설계부터 구현까지 단독 오너십 · 스택: Python, PostgreSQL, Retool.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /timeline -->
-
-
-  <!-- ══════════════ CATEGORY VIEW ══════════════ -->
-  <div id="category" class="tl-view">
-
-    <!-- Awards -->
-    <div class="cat-section">
-      <h2><span data-en>Awards</span><span data-ko>수상</span></h2>
-      <div class="cat-list">
-        <div class="cat-item">
-          <div class="cat-period">2022.09</div>
-          <div class="cat-name">Mildred L. Sanderson Prize in Mathematics</div>
-          <div class="cat-sub"><span data-en>MHC Dept. of Mathematics &amp; Statistics · Distinguished performance in mathematics, first year</span><span data-ko>MHC 수학통계학과 · 1학년 수학 최우수 성적</span></div>
-        </div>
-        <div class="cat-item">
-          <div class="cat-period">2022.11</div>
-          <div class="cat-name">Best Remote Health Hack — HackHolyoke 2022</div>
-          <div class="cat-sub"><span data-en>16 teams competed, 9 submitted · Innovation in digital health accessibility</span><span data-ko>16팀 참가, 제출 완료 9팀 중 수상 · 디지털 헬스 접근성 혁신</span></div>
-        </div>
-        <div class="cat-item">
-          <div class="cat-period">2025.05</div>
-          <div class="cat-name">Statistics Prize in Honor of George Whitfield Cobb</div>
-          <div class="cat-sub"><span data-en>MHC Dept. of Mathematics &amp; Statistics · Outstanding achievement in the Statistics major</span><span data-ko>MHC 수학통계학과 · 통계학 전공 최우수 학업 성취</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Work -->
-    <div class="cat-section">
-      <h2><span data-en>Work & Research</span><span data-ko>경력 & 연구</span></h2>
-      <div class="cat-list">
-        <div class="cat-item">
-          <div class="cat-period">2021.08 – 2025.05 (8 <span data-en>semesters</span><span data-ko>학기</span>)</div>
-          <div class="cat-name"><span data-en>Korean Language Tutor — Mount Holyoke College</span><span data-ko>한국어 수업 튜터 — Mount Holyoke College</span></div>
-          <div class="cat-sub"><span data-en>Paid on-campus program · 4–6 students/semester · ~32–48 students total</span><span data-ko>교내 유급 프로그램 · 학기당 4–6명 · 누적 약 32–48명</span></div>
-        </div>
-        <div class="cat-item">
-          <div class="cat-period">2023.09 – 2025.05 (4 <span data-en>semesters</span><span data-ko>학기</span>)</div>
-          <div class="cat-name"><span data-en>Teaching Assistant — MHC Dept. of Mathematics & Statistics</span><span data-ko>Teaching Assistant — MHC 수학통계학과</span></div>
-          <div class="cat-sub"><span data-en>Calculus II / Probability / Calculus III / Mathematical Statistics · 18–39 students/semester · group sessions, grading, 1:1 support</span><span data-ko>Calculus II / Probability / Calculus III / Mathematical Statistics · 학기당 18–39명 · 그룹 세션, 채점, 1:1 지원</span></div>
-        </div>
-        <div class="cat-item">
-          <div class="cat-period">2024.05 – 2025.05</div>
-          <div class="cat-name">Modeling Research Assistant — Mount Holyoke College</div>
-          <div class="cat-sub"><span data-en>NetLogo fractal growth simulation · R · Presented at university-wide Senior Symposium (Apr 2025)</span><span data-ko>NetLogo 기반 프랙탈 성장 시뮬레이션 · R · Senior Symposium 발표 (2025.04)</span></div>
-        </div>
-        <div class="cat-item">
-          <div class="cat-period">2023.06 – 2023.08</div>
-          <div class="cat-name"><span data-en>Math Tutor (Private)</span><span data-ko>수학 과외</span></div>
-          <div class="cat-sub"><span data-en>10th grade · Algebra &amp; Trigonometry · 2x/week · grade F → B</span><span data-ko>고등학교 10학년 · Algebra &amp; Trigonometry · 주 2회 · 성적 F → B 향상</span></div>
-        </div>
-        <div class="cat-item">
-          <div class="cat-period">2024.06 – 2024.08</div>
-          <div class="cat-name"><span data-en>TOEFL Tutor (Private)</span><span data-ko>TOEFL 과외</span></div>
-          <div class="cat-sub"><span data-en>English &amp; test-taking strategies · mock score 40 → 85 (+45 pts)</span><span data-ko>영어 및 시험 전략 지도 · 모의고사 40점 → 85점 (+45점)</span></div>
-        </div>
-        <div class="cat-item">
-          <div class="cat-period">2025.07 – 2026.02</div>
-          <div class="cat-name">Warehouse Operations Analyst — Samyang Logistics America</div>
-          <div class="cat-sub">
-            <span data-en>Daily analysis of inbound, outbound &amp; fulfillment operations data · analytical reports for internal leadership and client company.<br>Key project: 50,000+ min of task-level data analyzed · Excel workforce demand model built · 2 employees hired based on recommendation.</span>
-            <span data-ko>입출고·풀필먼트 전반 운영 데이터 일일 분석 · 내부 리더십 및 클라이언트 대상 분석 리포트 작성.<br>별도 프로젝트: 50,000분+ 작업 데이터 분석 · Excel 인력 수요 예측 모델 개발 · 추천 결과 2명 채용.</span>
-          </div>
-        </div>
-        <div class="cat-item">
-          <div class="cat-period">2026.03 – <span data-en>Present</span><span data-ko>현재</span></div>
-          <div class="cat-name">Statistics Intern — Change the Present (<span data-en>Non-profit, Remote</span><span data-ko>비영리, Remote</span>)</div>
-          <div class="cat-sub"><span data-en>Building a Google Sheets → PostgreSQL ETL pipeline · Python + SQL · Retool + PostgreSQL stack · sole ownership from design to deployment</span><span data-ko>Google Sheets → PostgreSQL ETL 파이프라인 구축 · Python + SQL · Retool + PostgreSQL 스택 · 설계부터 구현까지 단독 오너십</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Activities -->
-    <div class="cat-section">
-      <h2><span data-en>Activities & Leadership</span><span data-ko>활동 & 리더십</span></h2>
-      <div class="cat-list">
-        <div class="cat-item">
-          <div class="cat-period">2022.10 – 2024.05</div>
-          <div class="cat-name">SGA Constitution Review Committee</div>
-          <div class="cat-sub"><span data-en>Reviewed and revised the student government constitution; developed new policies</span><span data-ko>학생회 헌장 검토 및 정책 개정</span></div>
-        </div>
-        <div class="cat-item">
-          <div class="cat-period">2022.12 – 2024.05</div>
-          <div class="cat-name">CS Society — Marketing &amp; Media (<span data-en>Member → Chair</span><span data-ko>멤버 → 팀장</span>)</div>
-          <div class="cat-sub"><span data-en>Social media, poster design, event promotion, alumni interviews · promoted to Chair Nov 2023</span><span data-ko>SNS 운영, 포스터 제작, 이벤트 홍보, 졸업생 인터뷰 · 2023.11 팀장 승진</span></div>
-        </div>
-        <div class="cat-item">
-          <div class="cat-period">2022.12 – 2023.10</div>
-          <div class="cat-name">KSA Board</div>
-          <div class="cat-sub"><span data-en>Social media promotions · Korea Night 2023: $1,200 budget, 350 attendees — contributed across auditions, stage management, and planning</span><span data-ko>SNS 홍보 담당 · Korea Night 2023: 예산 $1,200, 참가자 350명 — 오디션·무대 감독 등 다방면 기여</span></div>
-        </div>
-        <div class="cat-item">
-          <div class="cat-period">2023.09 – 2024.12</div>
-          <div class="cat-name">SGA Student Conference Committee</div>
-          <div class="cat-sub"><span data-en>Designed &amp; administered college-wide annual surveys (Qualtrics) · 800–1,000+ respondents/year · 2 academic years · tailored data presentations per department</span><span data-ko>Qualtrics 전교 설문 설계·운영 · 연간 응답자 800–1,000명+ · 2개 academic year · 부서별 맞춤 데이터 리포트</span></div>
-        </div>
-        <div class="cat-item">
-          <div class="cat-period">2024.02 – 2025.02</div>
-          <div class="cat-name">HackHolyoke <span data-en>Co-chair (Organizing Team)</span><span data-ko>Co-chair (주최팀)</span></div>
-          <div class="cat-sub"><span data-en>Led planning &amp; execution of 24-hr hackathon · 3 sponsors · 135 participants · used participant survey data to optimize room allocation and resource planning</span><span data-ko>스폰서 3개사 · 참가자 135명 · 24시간 해커톤 기획·운영 총괄 · 참가자 설문 분석으로 데이터 기반 공간·자원 배분</span></div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /category -->
-
-</main>
-
-<footer>
-  <span data-en>© Yerim Oh · yerim23oh@gmail.com</span>
-  <span data-ko>© 오예림 · yerim23oh@gmail.com</span>
-</footer>
-
-<script src="main.js"></script>
-</body>
+    <script type="module" src="./js/main.js"></script>
+    <script type="module">
+      import { initExperience } from "./js/render.js";
+      document.addEventListener("DOMContentLoaded", initExperience);
+    </script>
+  </body>
 </html>

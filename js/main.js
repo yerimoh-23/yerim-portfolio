@@ -1,6 +1,7 @@
 import projects from "./data/project.js";
-import blogPosts from "./data/blog.js";
 import experience from "./data/experience.js";
+import skills from "./data/skill.js";
+
 
 // --- Navigation with sliding indicator ---
 const navLinks = document.querySelectorAll(".nav-btn");
@@ -142,32 +143,16 @@ function renderProjects() {
     .join("");
 }
 
-// --- Blog ---
-function renderBlog() {
-  const list = document.getElementById("blog-list");
-  list.innerHTML = blogPosts
-    .map((post, i) => {
-      const date = new Date(post.date).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
-      return `
-      <a href="${post.link}" target="_blank" rel="noopener" class="blog-card glass-card stagger-in" data-tilt>
-        <div class="blog-card-img">
-          <img src="${post.image}" alt="${post.title}" loading="lazy" />
-        </div>
-        <div class="blog-card-body">
-          <div class="blog-card-meta">
-            <span class="blog-card-category">${post.category}</span>
-            <span class="blog-card-date">${date}</span>
-          </div>
-          <h3 class="blog-card-title">${post.title}</h3>
-          <p class="blog-card-desc">${post.description}</p>
-        </div>
-      </a>
-    `;
-    })
+// --- Skills
+function renderSkills() {
+  const skillsContainer = document.getElementById("skills-list");
+  skillsContainer.innerHTML = skills
+    .map((skill) => `
+      <div class="skill-card glass-card">
+        <h3 class="skill-card-title">${skill.name}</h3>
+        <p class="skill-card-desc">${skill.description}</p>
+      </div>
+    `)
     .join("");
 }
 
@@ -231,55 +216,6 @@ function renderExperience() {
     .join("");
 }
 
-// --- Hobby image hover: scattered Polaroid fan ---
-// Supports comma-separated paths in data-image, e.g. "a.jpg,b.jpg,c.jpg"
-// Preset scatter transforms per count (rotation, x-offset, y-offset)
-const scatterPresets = [
-  // 1 image
-  [{ r: -2, x: 0, y: 0 }],
-  // 2 images
-  [{ r: -4, x: -80, y: 4 }, { r: 3, x: 80, y: -2 }],
-  // 3 images
-  [{ r: -5, x: -155, y: 6 }, { r: 1, x: 0, y: -4 }, { r: 4, x: 155, y: 2 }],
-  // 4 images
-  [{ r: -5, x: -230, y: 4 }, { r: -2, x: -76, y: -6 }, { r: 2, x: 76, y: 4 }, { r: 5, x: 230, y: -2 }],
-  // 5 images
-  [{ r: -6, x: -305, y: 4 }, { r: -3, x: -152, y: -6 }, { r: 0, x: 0, y: 2 }, { r: 3, x: 152, y: -4 }, { r: 6, x: 305, y: 4 }],
-];
-
-function initHobbyHovers() {
-  document.querySelectorAll(".hobby-keyword").forEach((el) => {
-    const raw = el.dataset.image;
-    if (!raw) return;
-
-    const srcs = raw.split(",").map((s) => s.trim()).filter(Boolean);
-    if (srcs.length === 0) return;
-
-    const count = Math.min(srcs.length, 5);
-    const presets = scatterPresets[count - 1];
-
-    const container = document.createElement("div");
-    container.className = "hobby-photos";
-
-    srcs.slice(0, 5).forEach((src, i) => {
-      const p = presets[i];
-      const photo = document.createElement("div");
-      photo.className = "hobby-photo";
-      photo.style.setProperty("--r", p.r + "deg");
-      photo.style.setProperty("--tx", p.x + "px");
-      photo.style.setProperty("--ty", p.y + "px");
-      photo.style.setProperty("--i", i);
-      photo.innerHTML = `<img src="${src}" alt="${el.textContent}" />`;
-      container.appendChild(photo);
-    });
-
-    el.appendChild(container);
-
-    el.addEventListener("mouseenter", () => container.classList.add("visible"));
-    el.addEventListener("mouseleave", () => container.classList.remove("visible"));
-  });
-}
-
 // --- 3D tilt effect on cards ---
 function initTiltEffect() {
   if (window.matchMedia("(pointer: coarse)").matches) return;
@@ -311,11 +247,43 @@ function triggerStagger(sectionId) {
   });
 }
 
+// ── Language Toggle ──
+const LANG_KEY = 'portfolio-lang';
+
+function initLang() {
+  const saved = localStorage.getItem(LANG_KEY) || 'en';
+  setLang(saved, false);
+}
+
+function setLang(lang, save = true) {
+  if (save) localStorage.setItem(LANG_KEY, lang);
+  const btn = document.getElementById('lang-toggle');
+  if (lang === 'ko') {
+    document.body.classList.add('ko');
+    if (btn) btn.textContent = 'ENG';
+  } else {
+    document.body.classList.remove('ko');
+    if (btn) btn.textContent = '한국어';
+  }
+}
+
+function toggleLang() {
+  const isKo = document.body.classList.contains('ko');
+  setLang(isKo ? 'en' : 'ko');
+}
+
+
+// Lang toggle button
+const langToggleBtn = document.getElementById('lang-toggle');
+if (langToggleBtn) {
+  langToggleBtn.addEventListener('click', toggleLang);
+}
+
 // --- Init ---
+initLang();
 renderProjects();
-renderBlog();
 renderExperience();
-initHobbyHovers();
+renderSkills();
 
 requestAnimationFrame(() => {
   triggerStagger("about");
